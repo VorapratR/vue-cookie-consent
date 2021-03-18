@@ -6,21 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <!-- Cookie Consent by https://www.FreePrivacyPolicy.com -->
-    <!-- <script type="text/javascript" src="//www.freeprivacypolicy.com/public/cookie-consent/3.1.0/cookie-consent.js"></script>
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            cookieconsent.run({
-                "notice_banner_type": "simple",
-                "consent_type": "express",
-                "palette": "light",
-                "language": "en",
-                "website_name": "https://vue-cookie-consent-test.web.app/"
-            });
-        });
-    </script> -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
-    <noscript>Cookie Consent by <a href="https://www.FreePrivacyPolicy.com/free-cookie-consent/" rel="nofollow noopener">FreePrivacyPolicy.com</a></noscript>
+    <!-- <noscript>Cookie Consent by <a href="https://www.FreePrivacyPolicy.com/free-cookie-consent/" rel="nofollow noopener">FreePrivacyPolicy.com</a></noscript> -->
     <!-- End Cookie Consent -->
     <title>
         <%= htmlWebpackPlugin.options.title %>
@@ -31,43 +17,6 @@
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <!-- <div id="cookieconsent"></div>
-
-    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script> -->
-    <!-- <script>
-        window.cookieconsent.initialise({
-            container: document.getElementById("cookieconsent"),
-            palette: {
-                popup: {
-                    background: "#1aa3ff"
-                },
-                button: {
-                    background: "#e0e0e0"
-                },
-            },
-            revokable: true,
-            onStatusChange: function(status) {
-                console.log(this.hasConsented() ?
-                    'enable cookies' : 'disable cookies');
-            },
-            "position": "bottom-left",
-            "theme": "classic",
-            "domain": "https://vue-cookie-consent-test.web.app/",
-            "secure": true,
-            "content": {
-                "header": 'Cookies used on the website!',
-                "message": ' This website uses cookies to improve your experience.',
-                "dismiss": 'กดฉันสิ',
-                "allow": 'Allow cookies',
-                "deny": 'Decline',
-                "link": 'นโยบาย',
-                "href": 'https://www.cmg.co.th/en/Terms&Conditions',
-                "close": '&#x274c;',
-                "policy": 'Cookie Policy',
-                "target": '_blank',
-            }
-        });
-    </script> -->
 
     <!-- Add cookie consent css & js -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
@@ -101,7 +50,7 @@
             const cookieConsent = getCookie('cookieconsent_status');
 
             // Start analytics if user consented or did not deny
-            if (cookieConsent === 'allow' || cookieConsent === '') {
+            if (cookieConsent === 'allow') {
                 addAnalytics();
             }
 
