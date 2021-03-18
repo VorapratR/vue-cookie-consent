@@ -56,28 +56,28 @@
 
             // Initialise cookie consent banner
             window.cookieconsent.initialise({
-                "palette": {
-                    "popup": {
-                        "background": "#efefef",
-                        "text": "#1E3678"
+                palette: {
+                    popup: {
+                        background: "#efefef",
+                        text: "#1E3678"
                     },
-                    "button": {
-                        "background": "#1E3678",
-                        "text": "#ffffff"
+                    button: {
+                        background: "#1E3678",
+                        text: "#ffffff"
                     }
                 },
-                "type": "opt-out",
-                "content": {
-                    "header": 'Cookies used on the website!',
-                    "message": 'บริษัทปูนซิเมนต์ไทย จำกัดใช้คุกกี้เพื่อให้ท่านได้รับประสบการณ์การใช้งานที่ดียิ่งขึ้น',
-                    "dismiss": 'ยอมรับ',
-                    "deny": 'ปฎิเสธ',
-                    "link": 'นโยบายการใช้คุกกี้',
-                    "href": 'http://www.npi-pipe.com/AboutUs',
-                    "close": '&#x274c;',
-                    "policy": 'อ่านนโยบายการคุ้มครองข้อมูลส่วนบุคคล(Privacy Policy) และนโยบายคุกกี้(Cookie Policy)',
-                    "target": '_blank',
-                    "allow": "ยอมรับ",
+                type: "opt-out",
+                content: {
+                    header: 'Cookies used on the website!',
+                    message: 'บริษัทปูนซิเมนต์ไทย จำกัดใช้คุกกี้เพื่อให้ท่านได้รับประสบการณ์การใช้งานที่ดียิ่งขึ้น',
+                    dismiss: 'ยอมรับ',
+                    deny: 'ปฎิเสธ',
+                    link: 'อ่านนโยบายการคุ้มครองข้อมูลส่วนบุคคล(Privacy Policy) และนโยบายคุกกี้(Cookie Policy)',
+                    href: 'http://www.npi-pipe.com/AboutUs',
+                    close: '&#x274c;',
+                    policy: 'ยกเลิกการให้สิทธิ์การใช้คุกกี้',
+                    target: '_blank',
+                    allow: "ยอมรับ",
                 },
                 // Reload the page on user choice to make sure cookie is set
                 onStatusChange: function(status, chosenBefore) {
