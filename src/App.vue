@@ -14,7 +14,11 @@ export default {
     HelloWorld,
   },
   created() {
-    this.$cookies.set("token", "GH1.1.1689020474.1484362313", "30MIN");
+    this.$cookies.set(
+      "test_cookie",
+      "Your feedback matters to us. Will you answer two quick questions to help us improve Medium membership?",
+      "30MIN"
+    );
   },
 };
 </script>

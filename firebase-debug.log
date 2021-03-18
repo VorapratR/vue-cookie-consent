@@ -1,0 +1,84 @@
+[debug] [2021-03-18T08:41:16.109Z] ----------------------------------------------------------------------
+[debug] [2021-03-18T08:41:16.110Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2021-03-18T08:41:16.110Z] CLI Version:   9.6.1
+[debug] [2021-03-18T08:41:16.110Z] Platform:      darwin
+[debug] [2021-03-18T08:41:16.111Z] Node Version:  v12.16.2
+[debug] [2021-03-18T08:41:16.111Z] Time:          Thu Mar 18 2021 15:41:16 GMT+0700 (Indochina Time)
+[debug] [2021-03-18T08:41:16.111Z] ----------------------------------------------------------------------
+[debug] [2021-03-18T08:41:16.111Z] 
+[debug] [2021-03-18T08:41:16.118Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-03-18T08:41:16.119Z] > authorizing via signed-in user
+[debug] [2021-03-18T08:41:16.119Z] [iam] checking project vue-cookie-consent-test for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-03-18T08:41:16.120Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/vue-cookie-consent-test:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-03-18T08:41:17.333Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 18 Mar 2021 08:41:17 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=987","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-18T08:41:17.335Z] > refreshing access token with scopes: []
+[debug] [2021-03-18T08:41:17.335Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-03-18T08:41:17.498Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","date":"Thu, 18 Mar 2021 08:41:17 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-18T08:41:17.529Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/vue-cookie-consent-test [none]
+[debug] [2021-03-18T08:41:18.075Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/vue-cookie-consent-test 200
+[debug] [2021-03-18T08:41:18.075Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/vue-cookie-consent-test {"projectId":"vue-cookie-consent-test","projectNumber":"353575602109","displayName":"vue-cookie-consent-test","name":"projects/vue-cookie-consent-test","resources":{"hostingSite":"vue-cookie-consent-test"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'vue-cookie-consent-test'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2021-03-18T08:41:18.078Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-03-18T08:41:18.078Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-03-18T08:41:18.336Z] <<< HTTP RESPONSE 200 {"date":"Thu, 18 Mar 2021 08:41:18 GMT","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-18T08:41:18.362Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/vue-cookie-consent-test/versions  
+ {"config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2021-03-18T08:41:19.935Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 18 Mar 2021 08:41:19 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[vue-cookie-consent-test]: beginning deploy... 
+[info] i  hosting[vue-cookie-consent-test]: found 9 files in ./dist 
+[debug] [2021-03-18T08:41:20.038Z] > refreshing access token with scopes: []
+[debug] [2021-03-18T08:41:20.039Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-03-18T08:41:20.039Z] [hosting] hash cache [ZGlzdA] stored for 9 files
+[debug] [2021-03-18T08:41:20.040Z] [hosting][hash queue][FINAL] {"max":92,"min":5,"avg":16,"active":0,"complete":9,"success":9,"errored":0,"retried":0,"total":9,"elapsed":97}
+[debug] [2021-03-18T08:41:20.198Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","date":"Thu, 18 Mar 2021 08:41:20 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-18T08:41:20.225Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/sites/vue-cookie-consent-test/versions/af8b27b2ceb3bee0:populateFiles [none]
+[debug] [2021-03-18T08:41:20.226Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/vue-cookie-consent-test/versions/af8b27b2ceb3bee0:populateFiles {"files":{"/404.html":"05cbc6f94d7a69ce2e29646eab13be2c884e61ba93e3094df5028866876d18b3","/css/app.fb0c6e1c.css":"0de4691bdf0718dd99133e42d63cb77a93be2c4022d7aa32a3248f1dabc06b1c","/index.html":"bb6626e3500a943a440df5b2eacbba0fe71b26a0d7b1580c0301acd5f8933aba","/favicon.ico":"1e71457865f706dc865b49a54a86e193818220d290b30226b6630a42faf1535d","/img/logo.82b9c7a5.png":"18a9d91561f909237fda7b9b9071eb13e6546f71e008c7767361672c015c272c","/js/app.7f315023.js":"ed763b9664c8703c33efe569302c24c6a63ae2affe8d5de1a2a40ce6cbe746b8","/js/app.7f315023.js.map":"468e04bae17410806cbb5d224d756ce892cd1175b50c9af6a65bf1d0834a3f06","/js/chunk-vendors.13b3334a.js":"5c658f89995b2f61a98c186d4c0d2f78d23fbeacc1a3380a0f4f8581a6ba1312","/js/chunk-vendors.13b3334a.js.map":"871641a5e37c55c929e411f5dad9afd651a03ff67e16ab142308f1e76d0da2bb"}}
+[debug] [2021-03-18T08:41:21.635Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/sites/vue-cookie-consent-test/versions/af8b27b2ceb3bee0:populateFiles 200
+[debug] [2021-03-18T08:41:21.635Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/vue-cookie-consent-test/versions/af8b27b2ceb3bee0:populateFiles {"uploadRequiredHashes":["bb6626e3500a943a440df5b2eacbba0fe71b26a0d7b1580c0301acd5f8933aba"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/vue-cookie-consent-test/versions/af8b27b2ceb3bee0/files"}
+[debug] [2021-03-18T08:41:21.636Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/vue-cookie-consent-test/versions/af8b27b2ceb3bee0/files/bb6626e3500a943a440df5b2eacbba0fe71b26a0d7b1580c0301acd5f8933aba [none]
+[debug] [2021-03-18T08:41:21.636Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/vue-cookie-consent-test/versions/af8b27b2ceb3bee0/files/bb6626e3500a943a440df5b2eacbba0fe71b26a0d7b1580c0301acd5f8933aba [stream]
+[debug] [2021-03-18T08:41:21.637Z] [hosting][populate queue][FINAL] {"max":1598,"min":1598,"avg":1598,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":1599}
+[debug] [2021-03-18T08:41:21.637Z] [hosting] uploads queued: 1
+[debug] [2021-03-18T08:41:25.815Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/vue-cookie-consent-test/versions/af8b27b2ceb3bee0/files/bb6626e3500a943a440df5b2eacbba0fe71b26a0d7b1580c0301acd5f8933aba 200
+[debug] [2021-03-18T08:41:25.815Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/vue-cookie-consent-test/versions/af8b27b2ceb3bee0/files/bb6626e3500a943a440df5b2eacbba0fe71b26a0d7b1580c0301acd5f8933aba [stream]
+[debug] [2021-03-18T08:41:25.815Z] [hosting][upload queue][FINAL] {"max":4180,"min":4180,"avg":4180,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":4180}
+[info] ✔  hosting[vue-cookie-consent-test]: file upload complete 
+[debug] [2021-03-18T08:41:25.816Z] [hosting] deploy completed after 5880ms
+[debug] [2021-03-18T08:41:26.193Z] [
+  {
+    "config": {
+      "public": "./dist",
+      "site": "vue-cookie-consent-test"
+    },
+    "site": "vue-cookie-consent-test",
+    "version": "sites/vue-cookie-consent-test/versions/af8b27b2ceb3bee0"
+  }
+]
+[info] i  hosting[vue-cookie-consent-test]: finalizing version... 
+[debug] [2021-03-18T08:41:26.194Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-03-18T08:41:26.194Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-03-18T08:41:26.361Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Thu, 18 Mar 2021 08:41:26 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-18T08:41:26.387Z] >>> HTTP REQUEST PATCH https://firebasehosting.googleapis.com/v1beta1/sites/vue-cookie-consent-test/versions/af8b27b2ceb3bee0?updateMask=status  
+ {"status":"FINALIZED"}
+[debug] [2021-03-18T08:41:27.877Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 18 Mar 2021 08:41:27 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-18T08:41:27.877Z] [hosting] finalized version for vue-cookie-consent-test: {"name":"sites/vue-cookie-consent-test/versions/af8b27b2ceb3bee0","status":"FINALIZED","config":{},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2021-03-18T08:41:19.742120Z","createUser":{"email":"voraprat.r@dosetech.co"},"finalizeTime":"2021-03-18T08:41:27.904594Z","finalizeUser":{"email":"voraprat.r@dosetech.co"}}
+[info] ✔  hosting[vue-cookie-consent-test]: version finalized 
+[info] i  hosting[vue-cookie-consent-test]: releasing new version... 
+[debug] [2021-03-18T08:41:27.878Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/vue-cookie-consent-test/releases?version_name=sites/vue-cookie-consent-test/versions/af8b27b2ceb3bee0  
+ {"message":null}
+[debug] [2021-03-18T08:41:29.545Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 18 Mar 2021 08:41:29 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-18T08:41:29.545Z] [hosting] release: {"name":"sites/vue-cookie-consent-test/releases/1616056888703914","version":{"name":"sites/vue-cookie-consent-test/versions/af8b27b2ceb3bee0","status":"FINALIZED","config":{},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2021-03-18T08:41:19.742120Z","createUser":{"email":"voraprat.r@dosetech.co"},"finalizeTime":"2021-03-18T08:41:27.904594Z","finalizeUser":{"email":"voraprat.r@dosetech.co"},"preview":{}},"type":"DEPLOY","releaseTime":"2021-03-18T08:41:28.703914725Z","releaseUser":{"email":"voraprat.r@dosetech.co"}}
+[info] ✔  hosting[vue-cookie-consent-test]: release complete 
+[info] 
+[info] ✔  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/vue-cookie-consent-test/overview
+[info] Hosting URL: https://vue-cookie-consent-test.web.app

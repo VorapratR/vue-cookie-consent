@@ -74,7 +74,7 @@
     <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
 
     <!-- Add google analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RZ1863332G"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-192511574-1"></script>
 
     <script>
         // Reads the value of a cookie by name or returns empty string
@@ -92,7 +92,7 @@
             }
 
             gtag('js', new Date());
-            gtag('config', 'G-RZ1863332G');
+            gtag('config', 'UA-192511574-1');
         }
 
         // Waiting for the load event
@@ -119,9 +119,16 @@
                 },
                 "type": "opt-out",
                 "content": {
+                    "header": 'Cookies used on the website!',
+                    "message": ' This website uses cookies to improve your experience.',
+                    "dismiss": 'กดฉันสิ',
+                    "deny": 'Decline',
+                    "link": 'นโยบาย',
+                    "href": 'https://www.cmg.co.th/en/Terms&Conditions',
+                    "close": '&#x274c;',
+                    "policy": 'Cookie Policy',
+                    "target": '_blank',
                     "allow": "Approve",
-                    "dismiss": "Approve",
-                    "deny": "Reject"
                 },
                 // Reload the page on user choice to make sure cookie is set
                 onStatusChange: function(status, chosenBefore) {
