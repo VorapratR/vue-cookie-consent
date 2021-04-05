@@ -17,22 +17,20 @@
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-
     <!-- Add cookie consent css & js -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
 
     <!-- Add google analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-192511574-1"></script>
-
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134588981-1"></script>
     <script>
         // Reads the value of a cookie by name or returns empty string
         function getCookie(name) {
             var b = document.cookie.match('(^|[^;]+)\\s*' + name + '\\s*=\\s*([^;]+)');
             return b ? b.pop() : '';
         }
-
-        // Actually starting analytics up
+        let propertyID = 'UA-134588981-1'
+            // Actually starting analytics up
         function addAnalytics() {
             window.dataLayer = window.dataLayer || [];
 
@@ -41,7 +39,7 @@
             }
 
             gtag('js', new Date());
-            gtag('config', 'UA-192511574-1');
+            gtag('config', propertyID);
         }
 
         // Waiting for the load event
@@ -50,7 +48,8 @@
             const cookieConsent = getCookie('cookieconsent_status');
 
             // Start analytics if user consented or did not deny
-            if (cookieConsent === 'allow') {
+            console.log(cookieConsent);
+            if (cookieConsent === 'dismiss') {
                 addAnalytics();
             }
 
@@ -66,14 +65,13 @@
                         text: "#ffffff"
                     }
                 },
-                type: "opt-out",
                 content: {
                     header: 'Cookies used on the website!',
-                    message: 'บริษัทปูนซิเมนต์ไทย จำกัดใช้คุกกี้เพื่อให้ท่านได้รับประสบการณ์การใช้งานที่ดียิ่งขึ้น',
+                    message: 'บริษัทนวพลาสติกอุตสาหกรรม จำกัดใช้คุกกี้เพื่อให้ท่านได้รับประสบการณ์การใช้งานที่ดียิ่งขึ้น',
                     dismiss: 'ยอมรับ',
                     deny: 'ปฎิเสธ',
-                    link: 'อ่านนโยบายการคุ้มครองข้อมูลส่วนบุคคล(Privacy Policy) และนโยบายคุกกี้(Cookie Policy)',
-                    href: 'http://www.npi-pipe.com/AboutUs',
+                    link: 'อ่านนโยบายการคุ้มครองข้อมูลส่วนบุคคล และนโยบายคุกกี้',
+                    href: 'https://npi-pipe.com/privacypolicy',
                     close: '&#x274c;',
                     policy: 'ยกเลิกการให้สิทธิ์การใช้คุกกี้',
                     target: '_blank',
