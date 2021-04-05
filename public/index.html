@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- <noscript>Cookie Consent by <a href="https://www.FreePrivacyPolicy.com/free-cookie-consent/" rel="nofollow noopener">FreePrivacyPolicy.com</a></noscript> -->
     <!-- End Cookie Consent -->
     <title>
@@ -23,67 +27,30 @@
 
     <!-- Add google analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-192511574-1"></script>
-    <script>
-        // Reads the value of a cookie by name or returns empty string
-        function getCookie(name) {
-            var b = document.cookie.match('(^|[^;]+)\\s*' + name + '\\s*=\\s*([^;]+)');
-            return b ? b.pop() : '';
-        }
-        let propertyID = 'UA-192511574-1'
-            // Actually starting analytics up
-        function addAnalytics() {
-            window.dataLayer = window.dataLayer || [];
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/VorapratR/dom-js@main/src/init.js"></script>
+    <script type="text/javascript">
+        CONSENTCOOKIE.init({
+            messageInCookieBarText: "บริษัท Test จำกัดใช้คุกกี้เพื่อให้ท่านได้รับประสบการณ์การใช้งานที่ดียิ่งขึ้น",
+            privacyPolicyText: "อ่านนโยบายการคุ้มครองข้อมูลส่วนบุคคล",
+            andText: "และ",
+            cookiePolicyText: "นโยบายคุกกี้",
+            editCookieText: "ปรับแต่งคุกกี้",
+            submitCookieText: "ยอมรับทั้งหมด",
+            modalModifyCookieTitleText: "การตั้งค่าคุกกี้",
+            modalBodyMessageText: "ข้าพเจ้ายินยอมให้ทางบริษัทใช้ Cookies ประเภท Analytics Cookies " +
+                "ที่ทำหน้าที่ประเมินประสิทธิ ภาพในการทำงานแต่ละส่วนของเว็บไซต์ และการปรับปรุง ซึ่งอาจเป็นส่วนที่บริษัทดำเนินการเอง " +
+                " หรือ ว่าจ้างบุคคลภายนอกดำเนินการดังกล่าวให้ โดยดำเนินการภายใต้ เงื่อนไขนโยบายข้อมูลส่วนบุคคลของ บริษัท",
+            saveAcceptText: "บันทึกการตั้งค่า",
+            allAcceptText: "ยอมรับทั้งหมด",
 
-            function gtag() {
-                dataLayer.push(arguments);
-            }
+            privacyPolicyURL: "https://nawaplastic.com/th/privacy-policy.php",
+            cookiePolicyURL: "https://nawaplastic.com/th/privacy-policy.php",
 
-            gtag('js', new Date());
-            gtag('config', propertyID);
-        }
-
-        // Waiting for the load event
-        window.addEventListener("load", function() {
-            // Reading "cookieconsent_status" cookie
-            const cookieConsent = getCookie('cookieconsent_status');
-
-            // Start analytics if user consented or did not deny
-            console.log(cookieConsent);
-            if (cookieConsent === 'dismiss') {
-                addAnalytics();
-            }
-
-            // Initialise cookie consent banner
-            window.cookieconsent.initialise({
-                palette: {
-                    popup: {
-                        background: "#efefef",
-                        text: "#1E3678"
-                    },
-                    button: {
-                        background: "#1E3678",
-                        text: "#ffffff"
-                    }
-                },
-                content: {
-                    header: 'Cookies used on the website!',
-                    message: 'บริษัทนวพลาสติกอุตสาหกรรม จำกัดใช้คุกกี้เพื่อให้ท่านได้รับประสบการณ์การใช้งานที่ดียิ่งขึ้น',
-                    dismiss: 'ยอมรับ',
-                    deny: 'ปฎิเสธ',
-                    link: 'อ่านนโยบายการคุ้มครองข้อมูลส่วนบุคคล และนโยบายคุกกี้',
-                    href: 'https://npi-pipe.com/privacypolicy',
-                    close: '&#x274c;',
-                    policy: 'ยกเลิกการให้สิทธิ์การใช้คุกกี้',
-                    target: '_blank',
-                    allow: "ยอมรับ",
-                },
-                // Reload the page on user choice to make sure cookie is set
-                onStatusChange: function(status, chosenBefore) {
-                    location.reload();
-                }
-            })
+            propertyID: "UA-192511574-1"
         });
     </script>
+    <script type="text/javascript" id="syndication" src="https://cdn.jsdelivr.net/gh/VorapratR/dom-js@main/src/syndication.js"></script>
+
     <div id="app"></div>
     <!-- built files will be auto injected -->
 </body>
