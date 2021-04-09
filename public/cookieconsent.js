@@ -1,9 +1,8 @@
 window.onload = function() {
     writeHTML();
-    checkedConsentInApp();
+    checkedConsentInApp(true);
     setDefaultInnerHTML();
     setDefaultHref();
-    setDefaultCheckBox();
     setDefaultStyle();
 }
 
@@ -12,7 +11,7 @@ function writeHTML() {
     // cookie bar start
     let cookieBar = document.createElement('div');
     cookieBar.id = "cookieBar";
-    cookieBar.className = "container-fluid p-2 d-flexjustify-content-center fixed-bottom";
+    cookieBar.className = "container-fluid px-3 py-3 px-lg-4 py-lg-3  my-2 d-flexjustify-content-center fixed-bottom ";
 
     let cookieBarRow = document.createElement('div');
     cookieBarRow.className = "row";
@@ -37,7 +36,7 @@ function writeHTML() {
     cookieBarColTitle.appendChild(messageInCookieBar);
 
     let cookieBarColEdit = document.createElement('div');
-    cookieBarColEdit.className = "col-md my-1 d-flex align-items-center";
+    cookieBarColEdit.className = "col-md my-1 py-0 d-flex align-items-center";
     let editCookie = document.createElement('button');
     editCookie.id = "editCookie";
     editCookie.className = "btn btn-outline-primary btn-block";
@@ -48,7 +47,7 @@ function writeHTML() {
     cookieBarColEdit.appendChild(editCookie);
 
     let cookieBarColSubmit = document.createElement('div');
-    cookieBarColSubmit.className = "col-md my-1  d-flex align-items-center";
+    cookieBarColSubmit.className = "col-md my-1 py-0 d-flex align-items-center";
     let submitCookie = document.createElement('button');
     submitCookie.id = "submitCookie";
     submitCookie.className = "btn btn-primary btn-block";
@@ -65,20 +64,25 @@ function writeHTML() {
     ccmain.parentNode.insertBefore(cookieBar, ccmain);
     // cookie bar end
 
-    // modifyModal start
+    // modifyModal start (cookie edit btn)
+    let toolTipCookie = document.createElement('div');
+    toolTipCookie.className = 'tool-tip-cookie'
     let modifyModal = document.createElement('button');
     modifyModal.id = "modifyModal";
-    modifyModal.className = "btn btn-light fixed-bottom mb-2 ml-1 ";
-    modifyModal.setAttribute("type", "button");
+    modifyModal.className = "btn cookie-btn btn-light fixed-bottom mb-2 ml-1 ";
     modifyModal.setAttribute("data-toggle", "modal");
     modifyModal.setAttribute("data-target", "#modalModifyCookie");
     let imgCookie = document.createElement('img');
-    imgCookie.className = "fixed-bottom m-2";
     imgCookie.setAttribute("src", "https://cdn.jsdelivr.net/gh/VorapratR/dom-js@main/assets/images/cookies.png");
     imgCookie.setAttribute("width", "30px");
+    let toolTipCookieText = document.createElement('span')
+    toolTipCookieText.id = 'toolTipCookieText'
+    toolTipCookieText.className = 'tool-tip-cookie-text'
 
     modifyModal.appendChild(imgCookie);
-    ccmain.parentNode.insertBefore(modifyModal, ccmain);
+    modifyModal.appendChild(toolTipCookieText)
+    toolTipCookie.appendChild(modifyModal)
+    ccmain.parentNode.insertBefore(toolTipCookie, ccmain);
     // modifyModal end
 
     // cookie modal start
@@ -92,18 +96,29 @@ function writeHTML() {
     modalModifyCookie.setAttribute("aria-hidden", "true");
 
     let modalDialog = document.createElement('div');
-    modalDialog.className = "modal-dialog";
+    modalDialog.className = "modal-dialog modal-dialog-centered";
     modalDialog.setAttribute("role", "document");
 
     let modalContent = document.createElement('div');
     modalContent.className = "modal-content";
 
     let modalHeader = document.createElement('div');
-    modalHeader.className = "modal-header";
+    modalHeader.className = "model-header-no-bottom";
 
+    let elementOverModalTitle = document.createElement('div');
+    elementOverModalTitle.className = "d-flex align-items-center"
     let modalModifyCookieTitle = document.createElement('h5');
     modalModifyCookieTitle.id = "modalModifyCookieTitle";
-    modalModifyCookieTitle.className = "modal-title";
+    modalModifyCookieTitle.className = "modal-title mr-3";
+    let allAccept = document.createElement('button');
+    allAccept.id = "allAccept";
+    allAccept.className = "btn btn-primary px-md-3";
+    allAccept.setAttribute("type", "button");
+    allAccept.setAttribute('onclick', "saveAllAcceptClick()")
+
+    elementOverModalTitle.appendChild(modalModifyCookieTitle);
+    elementOverModalTitle.appendChild(allAccept);
+
     let closeBtn = document.createElement('button');
     closeBtn.className = "close";
     closeBtn.setAttribute('type', "button");
@@ -114,56 +129,64 @@ function writeHTML() {
     spanClose.setAttribute("aria-hidden", "true");
 
     closeBtn.appendChild(spanClose);
-    modalHeader.appendChild(modalModifyCookieTitle);
+    modalHeader.appendChild(elementOverModalTitle);
     modalHeader.appendChild(closeBtn);
 
-    let modalBody = document.createElement('div');
-    modalBody.className = "modal-body";
-    let modalBodyContainer = document.createElement('div');
-    modalBodyContainer.className = "container";
+    let modalBody = document.createElement('div')
+    modalBody.className = "px-3"
+        // Strictly Necessary Cookies
+    let modalNecessaryCard = document.createElement('div');
+    modalNecessaryCard.className = "card-black";
+    let modalNecessaryCardBody = document.createElement('div');
+    modalNecessaryCardBody.className = 'card-body';
+    let headNecessaryElement = document.createElement('div');
+    headNecessaryElement.className = "d-flex justify-content-between align-items-center"
+    let strictlyTitle = document.createElement('b');
+    strictlyTitle.textContent = "Strictly Necessary Cookies";
+    let strictlyStatus = document.createElement('b')
+    strictlyStatus.className = "text-primary"
+    strictlyStatus.textContent = "เปิดใช้งานตลอดเวลา"
 
-    let modalBodyRowStrictly = document.createElement('div');
-    modalBodyRowStrictly.className = "row";
-    let modalStrictlyTitle = document.createElement('div');
-    modalStrictlyTitle.className = "col-8";
-    modalStrictlyTitle.appendChild(document.createTextNode("Strictly Necessary Cookies"));
-    let modalColStrictly = document.createElement('div');
-    modalColStrictly.className = "col-4 text-right";
-    let strictlyCheckbox = document.createElement('input');
-    strictlyCheckbox.id = "strictlyCheckbox";
-    strictlyCheckbox.setAttribute("type", "checkbox");
+    headNecessaryElement.appendChild(strictlyTitle)
+    headNecessaryElement.appendChild(strictlyStatus)
 
-    modalColStrictly.appendChild(strictlyCheckbox);
-    modalBodyRowStrictly.appendChild(modalStrictlyTitle);
-    modalBodyRowStrictly.appendChild(modalColStrictly);
+    let necessaryDescription = document.createElement('div')
+    necessaryDescription.className = "mt-1"
+    necessaryDescription.textContent = "Strictly Necessary cookies are required to help a website usable by enabling core functions and access to secure areas of the website. The website cannot be function properly without these cookies and they are enabled by default and cannot be disabled"
 
-    let modalBodyRowAnalytics = document.createElement('div');
-    modalBodyRowAnalytics.className = "row";
-    let modalAnalyticsTitle = document.createElement('div');
-    modalAnalyticsTitle.className = "col-8";
-    modalAnalyticsTitle.appendChild(document.createTextNode("Analytics Cookies"));
-    let modalColAnalytics = document.createElement('div');
-    modalColAnalytics.className = "col-4 text-right";
+    modalNecessaryCardBody.appendChild(headNecessaryElement)
+    modalNecessaryCardBody.appendChild(necessaryDescription)
+    modalNecessaryCard.appendChild(modalNecessaryCardBody)
+
+    // Analytics Cookies
+    let modalAnalyticsCard = document.createElement('div');
+    modalAnalyticsCard.className = "card-black";
+    let modalAnalyticsCardBody = document.createElement('div');
+    modalAnalyticsCardBody.className = 'card-body';
+    let headAnalyticsElement = document.createElement('div');
+    headAnalyticsElement.className = "d-flex justify-content-between align-items-center"
+    let analyticsTitle = document.createElement('b');
+    analyticsTitle.textContent = "Analytics Cookies";
+
     let analyticsCheckbox = document.createElement('input');
     analyticsCheckbox.id = "analyticsCheckbox";
-    analyticsCheckbox.setAttribute("type", "checkbox");
+    analyticsCheckbox.setAttribute('type', 'checkbox');
+    analyticsCheckbox.setAttribute('data-toggle', 'toggle')
+    analyticsCheckbox.setAttribute('data-size', 'sm')
 
-    modalColAnalytics.appendChild(analyticsCheckbox);
-    modalBodyRowAnalytics.appendChild(modalAnalyticsTitle);
-    modalBodyRowAnalytics.appendChild(modalColAnalytics);
+    headAnalyticsElement.appendChild(analyticsTitle)
+    headAnalyticsElement.appendChild(analyticsCheckbox)
 
-    modalBodyContainer.appendChild(modalBodyRowStrictly);
-    modalBodyContainer.appendChild(modalBodyRowAnalytics);
+    let analyticsDescription = document.createElement('div')
+    analyticsDescription.className = "mt-1"
+    analyticsDescription.textContent = "Analytics cookies help website to understand how visitors interact through the website. These cookies help to improve user experiences by collecting and reporting information."
 
-    let modalBodyContainerMessage = document.createElement('div');
-    modalBodyContainerMessage.className = "container my-3";
-    let modalBodyMessage = document.createElement('div');
-    modalBodyMessage.id = "modalBodyMessage";
+    modalAnalyticsCardBody.appendChild(headAnalyticsElement)
+    modalAnalyticsCardBody.appendChild(analyticsDescription)
+    modalAnalyticsCard.appendChild(modalAnalyticsCardBody)
 
-    modalBodyContainerMessage.appendChild(modalBodyMessage);
-
-    modalBody.appendChild(modalBodyContainer);
-    modalBody.appendChild(modalBodyContainerMessage);
+    modalBody.appendChild(modalNecessaryCard)
+    modalBody.appendChild(modalAnalyticsCard)
 
     let modalFooter = document.createElement('div');
     modalFooter.className = "modal-footer";
@@ -172,14 +195,8 @@ function writeHTML() {
     saveAccept.className = "btn btn-outline-dark mx-1 px-2";
     saveAccept.setAttribute("type", "button");
     saveAccept.setAttribute('onclick', "saveAcceptClick()")
-    let allAccept = document.createElement('button');
-    allAccept.id = "allAccept";
-    allAccept.className = "btn btn-primary px-2";
-    allAccept.setAttribute("type", "button");
-    allAccept.setAttribute('onclick', "saveAllAcceptClick()")
 
     modalFooter.appendChild(saveAccept);
-    modalFooter.appendChild(allAccept);
 
     modalContent.appendChild(modalHeader);
     modalContent.appendChild(modalBody);
@@ -199,14 +216,14 @@ function saveAcceptClick() {
     let newCookie = " consent-cookie-preference" + '=' + JSON.stringify(dataCookie) + ";"
     if (readCookie('consent-cookie')) {
         document.cookie = newCookie
-        console.log(document.cookie);
+            // console.log(document.cookie);
     } else {
         document.cookie = "consent-cookie" + "=" + "allows" + ";"
         document.cookie = newCookie
-        console.log(document.cookie);
+            // console.log(document.cookie);
     }
     $('#modalModifyCookie').modal('hide');
-    checkedConsentInApp();
+    checkedConsentInApp(false);
 
 }
 
@@ -218,13 +235,12 @@ function saveAllAcceptClick() {
 function saveCookie() {
     console.log('saveCookie');
     document.cookie = "consent-cookie" + "=" + "allows" + ";";
-    checkedConsentInApp();
+    checkedConsentInApp(false);
     document.getElementById("analyticsCheckbox").checked = true;
     saveAcceptClick();
 }
 
-function checkedConsentInApp() {
-    console.log('checkedConsentInApp');
+function checkedConsentInApp(fromWindowLoad) {
     document.getElementById("cookieBar").style.cssText = "display:block";
     document.getElementById("modifyModal").style.cssText = 'display:none';
     if (readCookie('consent-cookie')) {
@@ -235,17 +251,25 @@ function checkedConsentInApp() {
     }
 
     let consentCookiePreference = readCookie('consent-cookie-preference');
+
     if (consentCookiePreference) {
         consentCookiePreference = JSON.parse(consentCookiePreference);
         let data = CONSENTCOOKIE.getArgs();
         if (consentCookiePreference.analytics) {
             unblockAnalytics();
-        } else {
-            window.location.reload();
         }
+        // else {
+        //     if (fromWindowLoad == false) {
+        //         blockAnalytics();
+        //     }
+        // }
     }
 
 }
+
+// function blockAnalytics() {
+//     window.location.reload();
+// }
 
 function unblockAnalytics() {
     window.yett.unblock(/www\.google-analytics\.com/)
@@ -267,9 +291,10 @@ function setDefaultInnerHTML() {
         `${dataText.andText} <a id="cookiePolicy" target="_blank"></a>`;
     document.getElementById("cookiePolicy").innerHTML = `${dataText.cookiePolicyText}`;
     document.getElementById("editCookie").innerHTML = dataText.editCookieText;
+
     document.getElementById("submitCookie").innerHTML = dataText.submitCookieText;
+    document.getElementById("toolTipCookieText").innerHTML = dataText.modalModifyCookieTitleText
     document.getElementById("modalModifyCookieTitle").innerHTML = dataText.modalModifyCookieTitleText;
-    document.getElementById("modalBodyMessage").innerHTML = dataText.modalBodyMessageText;
 
     document.getElementById("saveAccept").innerHTML = dataText.saveAcceptText;
     document.getElementById("allAccept").innerHTML = dataText.allAcceptText;
@@ -277,10 +302,6 @@ function setDefaultInnerHTML() {
     document.getElementById("closeIcon").innerHTML = "&times;";
 }
 
-function setDefaultCheckBox() {
-    document.getElementById("strictlyCheckbox").disabled = true;
-    document.getElementById("strictlyCheckbox").checked = true;
-}
 
 function setDefaultHref() {
     let data = CONSENTCOOKIE.getArgs();
@@ -291,7 +312,8 @@ function setDefaultHref() {
 function setDefaultStyle() {
     document.getElementById("modifyModal").style.zIndex = "5";
     document.getElementById("cookieBar").style.zIndex = "5";
-    document.getElementById("cookieBar").style.backgroundColor = "rgb(239, 239, 239)";
+    document.getElementById("cookieBar").style.border = "1px solid black";
+    document.getElementById("cookieBar").style.borderRadius = "7px";
 }
 
 function closeModal() {
