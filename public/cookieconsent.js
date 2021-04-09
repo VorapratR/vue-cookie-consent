@@ -69,7 +69,7 @@ function writeHTML() {
     toolTipCookie.className = 'tool-tip-cookie'
     let modifyModal = document.createElement('button');
     modifyModal.id = "modifyModal";
-    modifyModal.className = "btn cookie-btn btn-light fixed-bottom mb-2 ml-1 ";
+    modifyModal.className = "btn cookie-btn btn-light fixed-bottom mb-2 ml-1 btn-fixed ";
     modifyModal.setAttribute("data-toggle", "modal");
     modifyModal.setAttribute("data-target", "#modalModifyCookie");
     let imgCookie = document.createElement('img');
@@ -314,6 +314,7 @@ function setDefaultStyle() {
     document.getElementById("cookieBar").style.zIndex = "5";
     document.getElementById("cookieBar").style.border = "1px solid black";
     document.getElementById("cookieBar").style.borderRadius = "7px";
+    document.getElementById("cookieBar").style.backgroundColor = "white";
 }
 
 function closeModal() {

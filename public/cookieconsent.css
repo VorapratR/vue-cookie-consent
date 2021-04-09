@@ -7,6 +7,10 @@
     border: 1px solid rgb(232, 232, 232);
 }
 
+.btn-fixed {
+    width: 44px !important;
+}
+
 .model-header-no-bottom {
     display: -ms-flexbox;
     display: flex;
@@ -67,8 +71,10 @@
     z-index: 1;
 }
 
-.tool-tip-cookie:hover .tool-tip-cookie-text {
-    visibility: visible;
+@media (min-width: 400px) {
+    .tool-tip-cookie:hover .tool-tip-cookie-text {
+        visibility: visible;
+    }
 }
 
 .container-fluid,
