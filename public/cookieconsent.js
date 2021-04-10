@@ -4,9 +4,11 @@ window.onload = function() {
     setDefaultInnerHTML();
     setDefaultHref();
     setDefaultStyle();
+    collapseDescription();
 }
 
 function writeHTML() {
+    let data = CONSENTCOOKIE.getArgs();
     let ccmain = document.getElementById('cookieconsent');
     // cookie bar start
     let cookieBar = document.createElement('div');
@@ -141,18 +143,30 @@ function writeHTML() {
     modalNecessaryCardBody.className = 'card-body';
     let headNecessaryElement = document.createElement('div');
     headNecessaryElement.className = "d-flex justify-content-between align-items-center"
-    let strictlyTitle = document.createElement('b');
-    strictlyTitle.textContent = "Strictly Necessary Cookies";
-    let strictlyStatus = document.createElement('b')
-    strictlyStatus.className = "text-primary"
-    strictlyStatus.textContent = "เปิดใช้งานตลอดเวลา"
+    let necessaryTitle = document.createElement('b');
+    necessaryTitle.textContent = data.necessaryTitleText;
+    let necessaryStatus = document.createElement('b')
+    necessaryStatus.className = "text-primary"
+    necessaryStatus.textContent = data.necessaryStatusText;
 
-    headNecessaryElement.appendChild(strictlyTitle)
-    headNecessaryElement.appendChild(strictlyStatus)
+    headNecessaryElement.appendChild(necessaryTitle)
+    headNecessaryElement.appendChild(necessaryStatus)
 
     let necessaryDescription = document.createElement('div')
     necessaryDescription.className = "mt-1"
-    necessaryDescription.textContent = "Strictly Necessary cookies are required to help a website usable by enabling core functions and access to secure areas of the website. The website cannot be function properly without these cookies and they are enabled by default and cannot be disabled"
+    necessaryDescription.textContent = data.necessaryDescriptionText
+    let necessaryMoreMessage = document.createElement('a')
+    necessaryMoreMessage.id = "necessaryMoreMessage"
+    necessaryMoreMessage.className = "collapse"
+    necessaryMoreMessage.textContent = data.necessaryMoreMessageText
+    let necessaryMore = document.createElement('a')
+    necessaryMore.id = "necessaryMoreId"
+    necessaryMore.className = 'text-primary ml-1'
+    necessaryMore.setAttribute('data-toggle', 'collapse')
+    necessaryMore.setAttribute('data-target', '#necessaryMoreMessage')
+
+    necessaryDescription.appendChild(necessaryMoreMessage);
+    necessaryDescription.appendChild(necessaryMore)
 
     modalNecessaryCardBody.appendChild(headNecessaryElement)
     modalNecessaryCardBody.appendChild(necessaryDescription)
@@ -166,7 +180,7 @@ function writeHTML() {
     let headAnalyticsElement = document.createElement('div');
     headAnalyticsElement.className = "d-flex justify-content-between align-items-center"
     let analyticsTitle = document.createElement('b');
-    analyticsTitle.textContent = "Analytics Cookies";
+    analyticsTitle.textContent = data.analyticsTitleText;
 
     let analyticsCheckbox = document.createElement('input');
     analyticsCheckbox.id = "analyticsCheckbox";
@@ -179,7 +193,19 @@ function writeHTML() {
 
     let analyticsDescription = document.createElement('div')
     analyticsDescription.className = "mt-1"
-    analyticsDescription.textContent = "Analytics cookies help website to understand how visitors interact through the website. These cookies help to improve user experiences by collecting and reporting information."
+    analyticsDescription.textContent = data.analyticsDescriptionText;
+    let analyticsMoreMessage = document.createElement('a')
+    analyticsMoreMessage.id = "analyticsMoreMessage"
+    analyticsMoreMessage.className = "collapse"
+    analyticsMoreMessage.textContent = data.analyticsMoreMessageText
+    let analyticsMore = document.createElement('a')
+    analyticsMore.id = 'analyticsMoreId'
+    analyticsMore.className = 'text-primary ml-1'
+    analyticsMore.setAttribute('data-toggle', 'collapse')
+    analyticsMore.setAttribute('data-target', '#analyticsMoreMessage')
+
+    analyticsDescription.appendChild(analyticsMoreMessage);
+    analyticsDescription.appendChild(analyticsMore)
 
     modalAnalyticsCardBody.appendChild(headAnalyticsElement)
     modalAnalyticsCardBody.appendChild(analyticsDescription)
@@ -192,7 +218,7 @@ function writeHTML() {
     modalFooter.className = "modal-footer";
     let saveAccept = document.createElement('button');
     saveAccept.id = "saveAccept";
-    saveAccept.className = "btn btn-outline-dark mx-1 px-2";
+    saveAccept.className = "btn btn-primary mx-1 px-2";
     saveAccept.setAttribute("type", "button");
     saveAccept.setAttribute('onclick', "saveAcceptClick()")
 
@@ -277,31 +303,56 @@ function unblockAnalytics() {
 }
 
 function setDefaultInnerHTML() {
-    let dataText = CONSENTCOOKIE.getArgs();
+    let data = CONSENTCOOKIE.getArgs();
 
     document.getElementById("messageInCookieBar").innerHTML = `
-    ${dataText.messageInCookieBarText} 
+    ${data.messageInCookieBarText} 
     <a id="privacyPolicy" target="_blank"></a>
     <span id="and" class="ml-1">
         <a id="cookiePolicy" target="_blank"></a>
     </span>
     `;
-    document.getElementById("privacyPolicy").innerHTML = `${dataText.privacyPolicyText}`;
+    document.getElementById("privacyPolicy").innerHTML = `${data.privacyPolicyText}`;
     document.getElementById("and").innerHTML =
-        `${dataText.andText} <a id="cookiePolicy" target="_blank"></a>`;
-    document.getElementById("cookiePolicy").innerHTML = `${dataText.cookiePolicyText}`;
-    document.getElementById("editCookie").innerHTML = dataText.editCookieText;
+        `${data.andText} <a id="cookiePolicy" target="_blank"></a>`;
+    document.getElementById("cookiePolicy").innerHTML = `${data.cookiePolicyText}`;
+    document.getElementById("editCookie").innerHTML = data.editCookieText;
 
-    document.getElementById("submitCookie").innerHTML = dataText.submitCookieText;
-    document.getElementById("toolTipCookieText").innerHTML = dataText.modalModifyCookieTitleText
-    document.getElementById("modalModifyCookieTitle").innerHTML = dataText.modalModifyCookieTitleText;
+    document.getElementById("submitCookie").innerHTML = data.submitCookieText;
+    document.getElementById("toolTipCookieText").innerHTML = data.modalModifyCookieTitleText
+    document.getElementById("modalModifyCookieTitle").innerHTML = data.modalModifyCookieTitleText;
 
-    document.getElementById("saveAccept").innerHTML = dataText.saveAcceptText;
-    document.getElementById("allAccept").innerHTML = dataText.allAcceptText;
+    document.getElementById("saveAccept").innerHTML = data.saveAcceptText;
+    document.getElementById("allAccept").innerHTML = data.allAcceptText;
 
-    document.getElementById("closeIcon").innerHTML = "&times;";
+    document.getElementById("necessaryMoreId").innerHTML = data.showMoreText;
+    document.getElementById("analyticsMoreId").innerHTML = data.showMoreText;
+
+    // document.getElementById("necessaryTitle").textContent = data.necessaryTitleText;
+    // document.getElementById("necessaryStatus").textContent = data.necessaryStatusText;
+    // document.getElementById("necessaryDescription").textContent = data.necessaryDescriptionText;
+    // console.log(document.getElementById("necessaryMoreMessageId"));
+    // document.getElementById("necessaryMoreMessageId").textContent = data.necessaryMoreMessageText;
+
+    // document.getElementById("analyticsTitle").innerHTML = data.analyticsTitleText;
+    // document.getElementById("analyticsDescription").innerHTML = data.analyticsDescriptionText;
+    // document.getElementById("analyticsMoreMessageId").innerHTML = data.analyticsMoreMessageText;
 }
 
+function collapseDescription() {
+    let data = CONSENTCOOKIE.getArgs();
+
+    $('#necessaryMoreId').click(function() {
+        $(this).text(function(i, old) {
+            return old.includes(data.showMoreOperator) ? data.showLessText : data.showMoreText;
+        });
+    });
+    $('#analyticsMoreId').click(function() {
+        $(this).text(function(i, old) {
+            return old.includes(data.showMoreOperator) ? data.showLessText : data.showMoreText;
+        });
+    });
+}
 
 function setDefaultHref() {
     let data = CONSENTCOOKIE.getArgs();
