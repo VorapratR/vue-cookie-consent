@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
     writeHTML();
     checkedConsentInApp(true);
     setDefaultInnerHTML();
@@ -136,7 +136,7 @@ function writeHTML() {
 
     let modalBody = document.createElement('div')
     modalBody.className = "px-3"
-        // Strictly Necessary Cookies
+    // Strictly Necessary Cookies
     let modalNecessaryCard = document.createElement('div');
     modalNecessaryCard.className = "card-black";
     let modalNecessaryCardBody = document.createElement('div');
@@ -242,11 +242,11 @@ function saveAcceptClick() {
     let newCookie = " consent-cookie-preference" + '=' + JSON.stringify(dataCookie) + ";"
     if (readCookie('consent-cookie')) {
         document.cookie = newCookie
-            // console.log(document.cookie);
+        // console.log(document.cookie);
     } else {
         document.cookie = "consent-cookie" + "=" + "allows" + ";"
         document.cookie = newCookie
-            // console.log(document.cookie);
+        // console.log(document.cookie);
     }
     $('#modalModifyCookie').modal('hide');
     checkedConsentInApp(false);
@@ -328,6 +328,7 @@ function setDefaultInnerHTML() {
     document.getElementById("necessaryMoreId").innerHTML = data.showMoreText;
     document.getElementById("analyticsMoreId").innerHTML = data.showMoreText;
 
+    document.getElementById("closeIcon").innerHTML = "&times;";
     // document.getElementById("necessaryTitle").textContent = data.necessaryTitleText;
     // document.getElementById("necessaryStatus").textContent = data.necessaryStatusText;
     // document.getElementById("necessaryDescription").textContent = data.necessaryDescriptionText;
@@ -342,13 +343,13 @@ function setDefaultInnerHTML() {
 function collapseDescription() {
     let data = CONSENTCOOKIE.getArgs();
 
-    $('#necessaryMoreId').click(function() {
-        $(this).text(function(i, old) {
+    $('#necessaryMoreId').click(function () {
+        $(this).text(function (i, old) {
             return old.includes(data.showMoreOperator) ? data.showLessText : data.showMoreText;
         });
     });
-    $('#analyticsMoreId').click(function() {
-        $(this).text(function(i, old) {
+    $('#analyticsMoreId').click(function () {
+        $(this).text(function (i, old) {
             return old.includes(data.showMoreOperator) ? data.showLessText : data.showMoreText;
         });
     });
